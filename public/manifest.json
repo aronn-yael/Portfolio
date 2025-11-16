@@ -1,0 +1,16 @@
+{
+  "name": "Aronn Yaël KABORÉ - Portfolio",
+  "short_name": "Aronn Portfolio",
+  "description": "Portfolio d'Aronn Yaël Léonard KABORÉ, Ingénieur en Data et IA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
