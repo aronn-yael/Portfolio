@@ -23,6 +23,18 @@ const Contact = () => {
     }));
   };
 
+  const scrollToForm = () => {
+    const formElement = document.getElementById('contact-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Focus sur le premier champ
+      setTimeout(() => {
+        const nameInput = document.getElementById('name');
+        if (nameInput) nameInput.focus();
+      }, 500);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -70,12 +82,13 @@ const Contact = () => {
       icon: Mail,
       label: 'Email',
       value: 'ayl.kabore.26@eigsica.ma',
-      link: 'ayl.kabore.26@eigsica.ma'
+      link: null, // Sera géré par onClick
+      isEmail: true
     },
     {
       icon: Phone,
       label: 'Téléphone',
-      value: '+212 707 30 36 783',
+      value: '+212 707 30 36 78',
       link: 'tel:+212707303678'
     }
   ];
@@ -151,7 +164,14 @@ const Contact = () => {
                       </div>
                       <div>
                         <p className="text-sm text-gray-600 mb-1">{info.label}</p>
-                        {info.link ? (
+                        {info.isEmail ? (
+                          <button
+                            onClick={scrollToForm}
+                            className="text-gray-900 font-medium hover:text-primary-600 transition-colors cursor-pointer text-left"
+                          >
+                            {info.value}
+                          </button>
+                        ) : info.link ? (
                           <a
                             href={info.link}
                             className="text-gray-900 font-medium hover:text-primary-600 transition-colors"
@@ -200,7 +220,7 @@ const Contact = () => {
                   <div>
                     <h4 className="font-bold text-gray-900 mb-2">Disponibilité</h4>
                     <p className="text-gray-700 text-sm">
-                      Actuellement à la recherche d'un <strong>stage PFE de 9 mois</strong> à partir de <strong>Janvier 2026</strong> dans le domaine de la Data et de l'IA.
+                      Actuellement à la recherche d'un <strong>stage PFE de 6 à 9 mois</strong> à partir de <strong>Janvier 2026</strong> dans le domaine de la Data et de l'IA.
                     </p>
                   </div>
                 </div>
@@ -210,6 +230,7 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <form
+                id="contact-form"
                 onSubmit={handleSubmit}
                 className="space-y-6"
               >

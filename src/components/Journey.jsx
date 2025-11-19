@@ -22,7 +22,7 @@ const Journey = () => {
       status: "Diplômé"
     },
     {
-      degree: "Baccalauréat Scientifique - Option C - Maths/PC",
+      degree: "Baccalauréat Scientifique - Série  C - Maths/PC",
       school: "Saint Jean Baptiste De La Salle",
       location: "Ouagadougou, Burkina Faso",
       period: "09/2020 - 07/2021",

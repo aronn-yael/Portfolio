@@ -24,15 +24,26 @@ const ProjectModal = ({ project, onClose }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={handleBackdropClick}
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto p-4"
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ type: "spring", duration: 0.5 }}
-          className="bg-white rounded-2xl max-w-4xl w-full my-8 shadow-2xl"
-        >
+        <div className="min-h-screen flex items-start justify-center py-12">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", duration: 0.5 }}
+            className="bg-white rounded-2xl max-w-4xl w-full shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+          {/* Close Button - Simple & Elegant */}
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 px-4 py-2.5 bg-gray-900/70 hover:bg-red-600 backdrop-blur-sm rounded-full shadow-xl border-2 border-white/50 transition-all duration-300 flex items-center justify-center z-50 hover:rotate-90 hover:scale-110 group"
+            style={{ minWidth: '65px', minHeight: '42px' }}
+          >
+            <X className="w-5 h-5 text-white" strokeWidth={2.5} />
+          </button>
+
           {/* Header */}
           <div className="relative">
             <div className="h-64 bg-gradient-to-br from-primary-100 to-purple-100 rounded-t-2xl overflow-hidden">
@@ -45,13 +56,6 @@ const ProjectModal = ({ project, onClose }) => {
                 }}
               />
             </div>
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors shadow-lg"
-              aria-label="Close modal"
-            >
-              <X className="w-6 h-6 text-gray-700" />
-            </button>
           </div>
 
           {/* Content */}
@@ -198,7 +202,8 @@ const ProjectModal = ({ project, onClose }) => {
               )}
             </div>
           </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );

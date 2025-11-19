@@ -22,6 +22,13 @@ const Footer = () => {
     }
   };
 
+  const scrollToForm = () => {
+    const formElement = document.getElementById('contact-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const footerLinks = [
     { label: 'Accueil', sectionId: 'hero' },
     { label: 'À propos', sectionId: 'about' },
@@ -35,17 +42,21 @@ const Footer = () => {
     {
       icon: Linkedin,
       url: 'https://www.linkedin.com/in/k-aronn',
-      label: 'LinkedIn'
+      label: 'LinkedIn',
+      external: true
     },
     {
       icon: Github,
       url: 'https://github.com/aronn-yael',
-      label: 'GitHub'
+      label: 'GitHub',
+      external: true
     },
     {
       icon: Mail,
-      url: 'ayl.kabore.26@eigsica.ma',
-      label: 'Email'
+      url: null,
+      label: 'Email',
+      external: false,
+      isEmail: true
     }
   ];
 
@@ -66,18 +77,31 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-3 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
+                social.isEmail ? (
+                  <motion.button
+                    key={index}
+                    onClick={scrollToForm}
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-3 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.button>
+                ) : (
+                  <motion.a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-3 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+                )
               ))}
             </div>
           </div>
@@ -108,19 +132,19 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3 text-gray-400">
               <li>
-                <a
-                  href="ayl.kabore.26@eigsica.ma"
-                  className="hover:text-primary-400 transition-colors"
+                <button
+                  onClick={scrollToForm}
+                  className="hover:text-primary-400 transition-colors cursor-pointer"
                 >
-                  ayl.kabore.26@eigcsica.ma
-                </a>
+                  ayl.kabore.26@eigsica.ma
+                </button>
               </li>
               <li>
                 <a
                   href="tel:+212707303678"
                   className="hover:text-primary-400 transition-colors"
                 >
-                  +212 707 30 36 783
+                  +212 707 30 36 78
                 </a>
               </li>
               <li>Casablanca, Maroc</li>

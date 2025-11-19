@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import {
   SiPandas,
   SiNumpy,
@@ -38,6 +38,9 @@ import {
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const controls = useAnimation();
+  const [isPaused, setIsPaused] = useState(false);
+  const timeoutRef = useRef(null);
 
   const technicalSkillsByCategory = {
     "Intelligence Artificielle": ["PyTorch", "Scikit-learn", "NLP", "Computer Vision", "Machine Learning"],
@@ -133,6 +136,42 @@ const Skills = () => {
     }
   };
 
+  // Gestion de l'animation automatique
+  useEffect(() => {
+    if (!isPaused) {
+      controls.start({
+        x: ["0%", "-50%"],
+        transition: {
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 20,
+            ease: "linear"
+          }
+        }
+      });
+    }
+  }, [isPaused, controls]);
+
+  // Pause l'animation quand l'utilisateur interagit
+  const handleDragStart = () => {
+    setIsPaused(true);
+    controls.stop();
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  // Reprend l'animation après un délai
+  const handleDragEnd = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 2000); // Reprend après 2 secondes
+  };
+
   return (
     <section id="skills" className="section-padding bg-white">
       <div className="container-custom">
@@ -187,21 +226,16 @@ const Skills = () => {
             <h3 className="text-2xl font-heading font-bold text-gray-900 mb-8 text-center">
               Outils & Technologies que j'utilise
             </h3>
-            <div className="relative overflow-hidden py-8">
+            <div className="relative overflow-hidden py-8 cursor-grab active:cursor-grabbing">
               {/* Scrolling Container - Duplicate twice for seamless loop */}
               <motion.div
                 className="flex gap-8"
-                animate={{
-                  x: ["0%", "-50%"]
-                }}
-                transition={{
-                  x: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 20,
-                    ease: "linear"
-                  }
-                }}
+                drag="x"
+                dragConstraints={{ left: -1000, right: 0 }}
+                dragElastic={0.1}
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
+                animate={controls}
               >
                 {/* First set */}
                 {toolsWithIcons.map((tool, index) => {

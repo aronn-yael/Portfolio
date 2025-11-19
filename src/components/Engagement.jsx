@@ -102,7 +102,7 @@ const Engagement = () => {
                   </div>
                   <div className="flex items-center gap-3 text-gray-700">
                     <Calendar className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                    <span>2023 – Présent</span>
+                    <span>Depuis 2023</span>
                   </div>
                 </div>
               </div>
@@ -192,8 +192,7 @@ const Engagement = () => {
               >
                 <Heart className="w-12 h-12 mb-4 opacity-80" />
                 <p className="text-lg font-medium leading-relaxed">
-                  "Contribuer au bien-être des communautés à travers des actions concrètes
-                  et renforcer l'impact social de l'association grâce à des partenariats stratégiques."
+                  Ma mission en tant que Responsable des Partenariats chez Warms Donors est de contribuer au bien-être des communautés par des actions concrètes, tout en renforçant l’impact social de l’association grâce à des partenariats stratégiques.
                 </p>
               </motion.div>
             </motion.div>

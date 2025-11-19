@@ -18,7 +18,7 @@ const Hero = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/cv-aronn-kabore.pdf';
+    link.href = `${import.meta.env.BASE_URL}cv-aronn-kabore.pdf`;
     link.download = 'CV-Aronn-Kabore.pdf';
     document.body.appendChild(link);
     link.click();
@@ -26,7 +26,7 @@ const Hero = () => {
   };
 
   const handleOpenCV = () => {
-    window.open('/cv-aronn-kabore.pdf', '_blank');
+    window.open(`${import.meta.env.BASE_URL}cv-aronn-kabore.pdf`, '_blank');
   };
 
   return (

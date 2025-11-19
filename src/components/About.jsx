@@ -74,7 +74,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl transform rotate-6"></div>
                 <div className="relative bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                   <img
-                    src="/avatar.jpg"
+                    src={`${import.meta.env.BASE_URL}avatar.jpg`}
                     alt="Aronn Yaël KABORÉ"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -109,7 +109,7 @@ const About = () => {
                 </p>
 
                 <p>
-                  Actuellement à la recherche d'un <strong>stage PFE de 9 mois</strong> à partir de Janvier 2026,
+                  Actuellement à la recherche d'un <strong>stage PFE de 6 à 9 mois</strong> à partir de Janvier 2026,
                   je souhaite mettre mes compétences au service de projets innovants dans le domaine de la Data et de l'IA.
                 </p>
               </div>

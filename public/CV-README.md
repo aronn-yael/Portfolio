@@ -32,8 +32,8 @@ Basé sur vos informations personnelles :
 ### En-tête
 - Nom : Aronn Yaël Léonard KABORÉ
 - Titre : Ingénieur Data & IA
-- Email : ayl.kabore.26@eigcsica.ma
-- Téléphone : +212 707 30 36 783
+- Email : ayl.kabore.26@eigsica.ma
+- Téléphone : +212 707 30 36 78
 - LinkedIn : linkedin.com/in/k-aronn
 - GitHub : github.com/aronn-yael
 - Localisation : Casablanca, Maroc

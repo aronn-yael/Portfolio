@@ -123,7 +123,7 @@ Consultez **[GITHUB-PAGES-DEPLOYMENT.md](GITHUB-PAGES-DEPLOYMENT.md)** pour un g
 
 ## 📧 Contact
 
-- **Email**: ayl.kabore.26@eigcsica.ma
+- **Email**: ayl.kabore.26@eigsica.ma
 - **LinkedIn**: [linkedin.com/in/k-aronn](https://www.linkedin.com/in/k-aronn)
 - **GitHub**: [github.com/aronn-yael](https://github.com/aronn-yael)
 - **Localisation**: Casablanca, Maroc
